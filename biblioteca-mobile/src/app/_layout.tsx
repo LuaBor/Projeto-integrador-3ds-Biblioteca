@@ -1,3 +1,4 @@
+
 import { Tabs } from 'expo-router';
 
 export default function Layout() {
@@ -17,6 +18,7 @@ export default function Layout() {
         tabBarInactiveTintColor: '#8e8e93',
       }}
     >
+      {/* 1. Lua 1 */}
       <Tabs.Screen
         name="index"
         options={{
@@ -24,6 +26,8 @@ export default function Layout() {
           tabBarLabel: 'Lua 1',
         }}
       />
+
+      {/* 2. Lua 2 */}
       <Tabs.Screen
         name="lua2"
         options={{
@@ -31,6 +35,8 @@ export default function Layout() {
           tabBarLabel: 'Lua 2',
         }}
       />
+
+      {/* 3. Vic 1 */}
       <Tabs.Screen
         name="vic"
         options={{
@@ -38,6 +44,8 @@ export default function Layout() {
           tabBarLabel: 'Vic 1',
         }}
       />
+
+      {/* 4. Vic 2 */}
       <Tabs.Screen
         name="vic2"
         options={{
@@ -45,6 +53,8 @@ export default function Layout() {
           tabBarLabel: 'Vic 2',
         }}
       />
+
+      {/* Esconde qualquer sobra do arquivo lua.tsx se ainda existir */}
       <Tabs.Screen
         name="lua"
         options={{
