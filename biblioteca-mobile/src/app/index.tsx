@@ -5,7 +5,7 @@ export default function LuaScreen() {
     <View style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.title}>Página 1: Lua 🌙</Text>
-        <Text style={styles.subtitle}>Use a barra de navegação abaixo para trocar de tela!</Text>
+        <Text style={styles.subtitle}>Navegue pelas abas abaixo!</Text>
       </View>
     </View>
   );
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: '100%',
-    maxWidth: 500, // Não deixa esticar demais no PC
+    maxWidth: 500,
     padding: 24,
     backgroundColor: '#ffffff',
     borderRadius: 12,
@@ -36,6 +36,5 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     color: '#666',
-    textAlign: 'center',
   },
 });
