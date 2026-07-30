@@ -5,7 +5,6 @@ export default function LuaScreen() {
     <View style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.title}>Página 1: Lua 🌙</Text>
-        <Text style={styles.subtitle}>Navegue pelas abas abaixo!</Text>
       </View>
     </View>
   );
