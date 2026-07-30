@@ -1,11 +1,65 @@
-import { Stack } from 'expo-router';
+import { Tabs } from 'expo-router';
 
 export default function Layout() {
   return (
-    <Stack
+    <Tabs
       screenOptions={{
-        headerShown: false, // Esconde a barra preta do topo em todas as telas
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#ffffff',
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+          borderTopWidth: 1,
+          borderTopColor: '#e0e0e0',
+        },
+        tabBarActiveTintColor: '#007AFF',
+        tabBarInactiveTintColor: '#8e8e93',
       }}
-    />
+    >
+      {/* 1. Página Principal (Lua 1) */}
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Lua 1',
+          tabBarLabel: 'Lua 1',
+        }}
+      />
+
+      {/* Esconde a aba duplicate do lua.tsx se ele existir na pasta */}
+      <Tabs.Screen
+        name="lua"
+        options={{
+          href: null, // Esse comando remove a aba duplicada da barra!
+        }}
+      />
+
+      {/* 2. Lua 2 */}
+      <Tabs.Screen
+        name="lua2"
+        options={{
+          title: 'Lua 2',
+          tabBarLabel: 'Lua 2',
+        }}
+      />
+
+      {/* 3. Vic 1 */}
+      <Tabs.Screen
+        name="vic"
+        options={{
+          title: 'Vic 1',
+          tabBarLabel: 'Vic 1',
+        }}
+      />
+
+      {/* 4. Vic 2 */}
+      <Tabs.Screen
+        name="vic2"
+        options={{
+          title: 'Vic 2',
+          tabBarLabel: 'Vic 2',
+        }}
+      />
+    </Tabs>
   );
 }
