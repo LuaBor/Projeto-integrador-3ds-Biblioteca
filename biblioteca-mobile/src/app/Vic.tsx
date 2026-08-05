@@ -4,13 +4,15 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 export default function VicScreen() {
   const [nomeAluno, setNomeAluno] = useState('');
   const [turmaAluno, setTurmaAluno] = useState('');
-
+  const [nomedolivro,setNomedolivro] = useState ('');
+  const [númerodolivro, setNúmerodolivro] = useState ('')
+  const [datadoempréstimo,setDatadoempréstimo] = useState ('')
+  const [datadedevolução,setDatadeDevolução] = useState ('')
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.title}></Text>
 
-        {/* Campo 1: Nome do Aluno */}
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Nome do Aluno:</Text>
           <TextInput
@@ -22,7 +24,6 @@ export default function VicScreen() {
           />
         </View>
 
-        {/* Campo 2: Turma do Aluno */}
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Turma do Aluno:</Text>
           <TextInput
@@ -33,9 +34,49 @@ export default function VicScreen() {
             onChangeText={(texto) => setTurmaAluno(texto)}
           />
         </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Nome do Livro:</Text>
+          <TextInput
+          style={styles.input}
+          placeholder="Ex:Moby Dick"
+          placeholderTextColor="#888"
+          value={nomedolivro}
+          onChangeText={(texto) => setNomedolivro (texto)}
+          />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Número do Livro: </Text>
+            <TextInput
+            style={styles.input}
+            placeholder= "Ex:810"
+            placeholderTextColor="#888"
+            value={númerodolivro}
+            onChangeText={(texto) => setNúmerodolivro (texto)}
+             />
+          </View>
+          <View style={styles.inputContainer}>
+          <Text style={styles.label}> Data do empréstimo:</Text>
+          <TextInput
+          style={styles.input}
+          placeholder="Ex:06/08/2026"
+          placeholderTextColor="#888"
+          value={datadoempréstimo}
+          onChangeText={(texto) => setDatadoempréstimo (texto)}
+          />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}> Data de Devolução:</Text>
+            <TextInput
+            style={styles.input}
+            placeholder= "Ex: 12/08/2026"
+            placeholderTextColor="#888"
+            value={datadedevolução}
+            onChangeText={(texto) => setDatadeDevolução (texto)}
+            />
+          </View>
 
-        {/* Exibição dos dados digitados (Preview) */}
-        {(nomeAluno !== '' || turmaAluno !== '') && (
+
+        {(nomeAluno !== '' || turmaAluno !== '' || nomedolivro !== '' || númerodolivro !== '' ) && (
           <View style={styles.previewContainer}>
             <Text style={styles.previewText}>
               Aluno: <Text style={styles.bold}>{nomeAluno || '—'}</Text>
@@ -43,6 +84,22 @@ export default function VicScreen() {
             <Text style={styles.previewText}>
               Turma: <Text style={styles.bold}>{turmaAluno || '—'}</Text>
             </Text>
+            <Text style={styles.previewText}>
+            Livro: <Text style={styles.bold}>{nomedolivro || '—' } </Text>
+            </Text>
+            <Text style={styles.previewText}>
+              Número: <Text style={styles.bold}>{númerodolivro  || '—' }</Text>
+            </Text>
+            <Text style={styles.previewText}>
+              Data: <Text style={styles.bold}>{datadoempréstimo || '—'}</Text>
+            </Text>
+            <Text style={styles.previewText}>
+              Devolução: <Text style={styles.bold}>{datadedevolução  || '—' } </Text>
+            </Text>
+
+
+              
+              
           </View>
         )}
       </View>
