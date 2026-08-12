@@ -1,4 +1,4 @@
-          import { useRouter } from 'expo-router';
+         import { Link, useRouter } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Lua2Screen() {
@@ -8,21 +8,23 @@ export default function Lua2Screen() {
     <View style={styles.container}>
 
       <View style={styles.card}>
-        <TouchableOpacity 
-          style={styles.button}
-          activeOpacity={0.8}
-          onPress={() => router.push('/vic')}
-        >
-          <Text style={styles.buttonText}>CADASTRAR LIVRO</Text>
-        </TouchableOpacity>
+        <Link href="/vic" asChild>
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.buttonText}>CADASTRAR LIVRO</Text>
+          </TouchableOpacity>
+        </Link>
 
-        <TouchableOpacity 
-          style={styles.button}
-          activeOpacity={0.8}
-          onPress={() => router.push('/vic2')}
-        >
-          <Text style={styles.buttonText}>EMPRÉSTIMO</Text>
-        </TouchableOpacity>
+        <Link href="/vic2" asChild>
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.buttonText}>EMPRÉSTIMO</Text>
+          </TouchableOpacity>
+        </Link>
       </View>
     </View>
   );

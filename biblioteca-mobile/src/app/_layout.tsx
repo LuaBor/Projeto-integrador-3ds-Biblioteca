@@ -1,5 +1,4 @@
-import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
-import Entypo from '@expo/vector-icons/Entypo';
+import { AntDesign, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
 export default function Layout() {
@@ -36,7 +35,7 @@ export default function Layout() {
           title: 'Lua 2',
           tabBarLabel: 'Lua 2',
           tabBarIcon: ({ color, size }) => (
-           <Entypo name="menu" size={size} color={color} />
+            <Entypo name="menu" size={size} color={color} />
           ),
         }}
       />
