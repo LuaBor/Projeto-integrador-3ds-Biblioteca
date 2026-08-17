@@ -4,16 +4,20 @@ import { Alert, StyleSheet, Text, TextInput, View } from 'react-native';
 export default function VicScreen() {
   const [nomedolivro, setNomedolivro] = useState('');
   const [códigodolivro, setCódigodolivro] = useState('')
+  const [sessão, setSessão] = useState ('')
   
   const [erros, setErros] = useState<{ [key: string]: boolean }>({});
 
   const inputLivroRef = useRef<TextInput>(null);
-  const inputNumeroRef = useRef<TextInput>(null);
+  const inputCódigoRef = useRef<TextInput>(null);
+  const inputSessãoRef = useRef<TextInput>(null);
+  
   
   const handleSubmit = () => {
     const novosErros = {
       nomedolivro: !nomedolivro.trim(),
       códigodolivro: !códigodolivro.trim(),
+      sessão: !sessão.trim(),
     
     };
 
@@ -48,7 +52,7 @@ export default function VicScreen() {
               if (erros.nomedolivro) setErros({ ...erros, nomedolivro: false });
             }}
             returnKeyType="next"
-            onSubmitEditing={() => inputNumeroRef.current?.focus()}
+            onSubmitEditing={() => inputLivroRef.current?.focus()}
             blurOnSubmit={false}
           />
         </View>
@@ -56,8 +60,36 @@ export default function VicScreen() {
         <View style={styles.inputContainer}>
           <Text style={styles.label}> Código do Livro:</Text>
           <TextInput
-          
-/>
+          ref={inputCódigoRef}
+          style={[styles.input,erros.códigodolivro && styles.inputError]}
+          placeholder='813'
+          placeholderTextColor="#888"
+          value={códigodolivro}
+          onChangeText={(texto) => {  
+            setCódigodolivro(texto);
+            if (erros.códigodolivro) setErros ({ ...erros, códigodolivro: false});
+          }}
+          returnKeyType="next"
+          onSubmitEditing={() => inputCódigoRef.current?.focus()}
+          blurOnSubmit={false}
+         />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}> Sessão:</Text>
+          <TextInput
+         ref={inputSessãoRef}
+         style={[styles.input,erros.Sessão && styles.inputError]}
+         placeholder='Literatura americana'
+         placeholderTextColor="#888"
+         value={sessão}
+         onChangeText={(texto) => {
+          setSessão(texto);
+          if (erros.Sessão) setErros ({ ...erros, sessão: false});
+         }}
+         returnKeyType="next"
+         onSubmitEditing={() => inputSessãoRef.current?.focus()}
+         blurOnSubmit={false}
+         />
         </View>
 
         
