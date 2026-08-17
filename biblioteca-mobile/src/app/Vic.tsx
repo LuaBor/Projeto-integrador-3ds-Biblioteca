@@ -1,7 +1,10 @@
+import { useRouter } from 'expo-router';
 import { useRef, useState } from 'react';
-import { Alert, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function VicScreen() {
+  const router = useRouter();
+
   const [nomeAluno, setNomeAluno] = useState('');
   const [turmaAluno, setTurmaAluno] = useState('');
   const [nomedolivro, setNomedolivro] = useState('');
@@ -32,18 +35,24 @@ export default function VicScreen() {
     const temErro = Object.values(novosErros).some((erro) => erro);
 
     if (temErro) {
-      Alert.alert('Atenção', 'Por favor, preencha todos os campos obrigatórios.');
+      if (Platform.OS === 'web') {
+        alert('Atenção: Por favor, preencha todos os campos obrigatórios.');
+      } else {
+        Alert.alert('Atenção', 'Por favor, preencha todos os campos obrigatórios.');
+      }
       return;
     }
 
-    Alert.alert('Sucesso', 'Empréstimo registrado com sucesso!');
+    if (Platform.OS === 'web') {
+      alert('Empréstimo finalizado com sucesso!');
+    } else {
+      Alert.alert('Sucesso', 'Empréstimo finalizado com sucesso!');
+    }
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Text style={styles.title}></Text>
-
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Nome do Aluno:</Text>
           <TextInput
@@ -84,7 +93,7 @@ export default function VicScreen() {
           <TextInput
             ref={inputLivroRef}
             style={[styles.input, erros.nomedolivro && styles.inputError]}
-            placeholder="Ex:Moby Dick"
+            placeholder="Ex: Moby Dick"
             placeholderTextColor="#888"
             value={nomedolivro}
             onChangeText={(texto) => {
@@ -98,11 +107,11 @@ export default function VicScreen() {
         </View>
 
         <View style={styles.inputContainer}>
-          <Text style={styles.label}>Número do Livro: </Text>
+          <Text style={styles.label}>Número do Livro:</Text>
           <TextInput
             ref={inputNumeroRef}
             style={[styles.input, erros.númerodolivro && styles.inputError]}
-            placeholder="Ex:810"
+            placeholder="Ex: 810"
             placeholderTextColor="#888"
             value={númerodolivro}
             onChangeText={(texto) => {
@@ -120,7 +129,7 @@ export default function VicScreen() {
           <TextInput
             ref={inputEmprestimoRef}
             style={[styles.input, erros.datadoempréstimo && styles.inputError]}
-            placeholder="Ex:06/08/2026"
+            placeholder="Ex: 06/08/2026"
             placeholderTextColor="#888"
             value={datadoempréstimo}
             onChangeText={(texto) => {
@@ -173,10 +182,24 @@ export default function VicScreen() {
           </View>
         )}
       </View>
+
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.8}
+        onPress={handleSubmit}
+      >
+        <Text style={styles.buttonText}>EMPRÉSTIMO</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => router.push('/lua2')}
+      >
+        <Text style={styles.backButtonText}>VOLTAR</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -198,12 +221,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 20,
   },
   inputContainer: {
     width: '100%',
@@ -243,5 +260,37 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
     color: '#000',
+  },
+  button: {
+    width: '100%',
+    maxWidth: 220,
+    backgroundColor: '#6B7C8C',
+    height: 50,
+    borderRadius: 25,
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    letterSpacing: 1.5,
+  },
+  backButton: {
+    marginTop: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  backButtonText: {
+    color: '#ffffff',
+    fontSize: 14,
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   },
 });
