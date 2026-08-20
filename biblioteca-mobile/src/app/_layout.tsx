@@ -10,6 +10,7 @@ export default function Layout() {
         tabBarInactiveTintColor: '#888888',
       }}
     >
+      
       <Tabs.Screen
         name="index"
         options={{
@@ -31,7 +32,7 @@ export default function Layout() {
       />
 
       <Tabs.Screen
-        name="vic1"
+        name="vic"
         options={{
           title: 'Vic 1',
           tabBarIcon: ({ color, size }) => (
@@ -41,26 +42,12 @@ export default function Layout() {
       />
 
       <Tabs.Screen
-        name="vic2_old"
+        name="vic2"
         options={{
           title: 'Vic 2',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="barcode-outline" size={size} color={color} />
           ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="vic"
-        options={{
-          href: null, 
-        }}
-      />
-
-      <Tabs.Screen
-        name="vic2"
-        options={{
-          href: null, 
         }}
       />
     </Tabs>
