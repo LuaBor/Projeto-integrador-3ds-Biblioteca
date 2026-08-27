@@ -8,23 +8,22 @@ export default function LuaScreen() {
   const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
   const router = useRouter();
 
- const handleLogin = () => {
-  if (!nome.trim() || !senha.trim() || !confirmacaoSenha.trim()) {
-    alert('Preencha todos os campos obrigatórios!');
-    return;
-  }
+  const handleLogin = () => {
+    if (!nome.trim() || !senha.trim() || !confirmacaoSenha.trim()) {
+      alert('Preencha todos os campos obrigatórios!');
+      return;
+    }
 
-  if (senha !== confirmacaoSenha) {
-    alert('As senhas não coincidem!');
-    return;
-  }
+    if (senha !== confirmacaoSenha) {
+      alert('As senhas não coincidem!');
+      return;
+    }
 
-  router.push('/lua2');
-};
+    router.push('/lua2');
+  };
 
   return (
     <View style={styles.container}>
-  
       <View style={styles.card}>
         <Text style={styles.label}>Nome:</Text>
         <TextInput
@@ -32,7 +31,7 @@ export default function LuaScreen() {
           value={nome}
           onChangeText={setNome}
           placeholder="Digite seu nome"
-          placeholderTextColor='#888'
+          placeholderTextColor="#888"
         />
 
         <Text style={styles.label}>Senha:</Text>
@@ -42,7 +41,7 @@ export default function LuaScreen() {
           value={senha}
           onChangeText={setSenha}
           placeholder="Digite sua senha"
-          placeholderTextColor='#888'
+          placeholderTextColor="#888"
         />
 
         <Text style={styles.label}>Confirmação de senha:</Text>
@@ -52,13 +51,13 @@ export default function LuaScreen() {
           value={confirmacaoSenha}
           onChangeText={setConfirmacaoSenha}
           placeholder="Confirme sua senha"
-          placeholderTextColor='#888'
+          placeholderTextColor="#888"
         />
       </View>
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-  <Text style={styles.buttonText}>LOGIN</Text>
-</TouchableOpacity>
+        <Text style={styles.buttonText}>LOGIN</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -94,26 +93,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-  width: '100%',
-  maxWidth: 220,
-  backgroundColor: '#6B7C8Cs',
-  height: 50,                
-  borderRadius: 25,        
-  marginTop: 28,
-  alignItems: 'center',
-  justifyContent: 'center', 
-
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 4 },
-  shadowOpacity: 0.50,
-  shadowRadius: 6,
-  elevation: 4,
-},
+    width: '100%',
+    maxWidth: 220,
+    backgroundColor: '#6B7C8C',
+    height: 50,
+    borderRadius: 25,
+    marginTop: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    elevation: 4,
+  },
   buttonText: {
-  color: '#FFFFFF',         
-  fontSize: 16,
-  fontWeight: 'bold',
-  letterSpacing: 1.5 ,       
-  userSelect: 'none',   
-},
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    letterSpacing: 1.5,
+  },
 });
